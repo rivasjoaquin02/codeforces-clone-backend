@@ -37,7 +37,7 @@ async def retrieve_user(field: str, key: str | ObjectId) -> UserDBSchema | None:
     retrieve_user(field="username", key="johndoe") -> dict
     """
     user_in_db: dict = await users_collection.find_one({field: key})
-
+    
     if not user_in_db:
         return None
 

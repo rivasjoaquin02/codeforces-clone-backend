@@ -35,7 +35,7 @@ class SolutionDBSchema(SolutionSchema):
         }
 
 
-class status_code(str ,enum.Enum):
+class status_code(str, enum.Enum):
     AC = "AC"
     WA = "WA"
     TLE = "TLE"
@@ -59,7 +59,6 @@ class SolutionResultSchema(BaseModel):
 
 
 # helpers
-
 
 def dict_to_solution_db_schema(solution: dict) -> SolutionDBSchema:
     return SolutionDBSchema(
