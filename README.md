@@ -44,6 +44,7 @@ Auth throuth OAuth2 Scheme and JWT Tokens
 
 - python
 - pip
+- mongodb
 
 
 ### Steps
@@ -56,6 +57,8 @@ pip install -r /api/requirements.txt
 
 # run it
 python /api/main.py
+
+# install mongodb
 ```
 
 ## Docs with Swagger UI
