@@ -55,6 +55,7 @@ async def add_problem(authorId: str, problem_data: ProblemSchema) -> ProblemDBSc
         "example_input": problem_data.example_input,
         "example_output": problem_data.example_output,
         "tags": problem_data.tags,
+        "difficulty": problem_data.difficulty,
     }
 
     inserted_problem = await problems_collection.insert_one(problem_to_insert)
