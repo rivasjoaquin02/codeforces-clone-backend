@@ -9,6 +9,7 @@ class ProblemSchema(BaseModel):
     example_input: str
     example_output: str
     tags: list[str] | None
+    difficulty: str
 
     class Config:
         schema_extra = {
@@ -18,6 +19,7 @@ class ProblemSchema(BaseModel):
                 "example_input": "4 3 4 3 3 1 1 2",
                 "example_output": "2 2 3 0",
                 "tags": ["implementation", "math"],
+                "difficulty": "easy",
             }
         }
 
@@ -33,6 +35,7 @@ class UpdateProblemSchema(BaseModel):
     example_input: str | None
     example_output: str | None
     tags: list[str] | None
+    difficulty: str | None
 
     class Config:
         schema_extra = {
@@ -54,4 +57,5 @@ def dict_to_problem_db_schema(problem: dict) -> ProblemDBSchema:
         example_input=problem["example_input"],
         example_output=problem["example_output"],
         tags=problem["tags"],
+        difficulty=problem["difficulty"],
     )
