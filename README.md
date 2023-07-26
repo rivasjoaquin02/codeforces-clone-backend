@@ -38,7 +38,7 @@ Auth throuth OAuth2 Scheme and JWT Tokens
 - [ ] judge the answer feature
 
 
-## Get Started
+## Getting StartedGetting Started
 
 ### Requirements
 

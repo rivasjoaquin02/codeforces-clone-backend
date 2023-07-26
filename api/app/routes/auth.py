@@ -23,7 +23,7 @@ class ResponseToken(BaseModel):
 
 
 @router.post(
-    "/signin",
+    "/signup",
     status_code=status.HTTP_201_CREATED,
     response_description="Sign In a new user",
     response_model=ResponseToken,
@@ -32,6 +32,7 @@ async def signup(
     form: OAuth2PasswordRequestForm = Depends(),
     aditional: AditionalDataForm = Depends(),
 ):
+    print (form)
     try:
         user_form = UserSignupSchema(
             username=form.username,
@@ -41,7 +42,6 @@ async def signup(
         )
     except ValidationError as e:
         raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail=e.errors())
-
     inserted_user = await add_user(user_form)
     if not inserted_user:
         raise HTTPException(
