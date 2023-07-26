@@ -23,12 +23,12 @@ class ResponseToken(BaseModel):
 
 
 @router.post(
-    "/signup",
+    "/signin",
     status_code=status.HTTP_201_CREATED,
     response_description="Sign In a new user",
     response_model=ResponseToken,
 )
-async def signup(
+async def signin(
     form: OAuth2PasswordRequestForm = Depends(),
     aditional: AditionalDataForm = Depends(),
 ):
