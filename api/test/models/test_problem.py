@@ -6,16 +6,16 @@ def test_problem_schema():
         "authorId": "1",
         "title": "Rudolph and Cut the Rope",
         "description": "There are nnails driven into the wall, the ith nail is drive...",
-        "example_input": "4 3 4 3 3 1 1 2",
-        "example_output": "2 2 3 0",
+        "inputExample": "4 3 4 3 3 1 1 2",
+        "outputExample": "2 2 3 0",
         "tags": ["implementation", "math"],
     }
     problem = ProblemSchema(**data)
     assert problem.authorId == data["authorId"]
     assert problem.title == data["title"]
     assert problem.description == data["description"]
-    assert problem.example_input == data["example_input"]
-    assert problem.example_output == data["example_output"]
+    assert problem.inputExample == data["inputExample"]
+    assert problem.outputExample == data["outputExample"]
     assert problem.tags == data["tags"]
 
 
@@ -25,8 +25,8 @@ def test_problem_db_schema():
         "authorId": "456",
         "title": "Rudolph and Cut the Rope",
         "description": "There are nnails driven into the wall, the ith nail is drive...",
-        "example_input": "4 3 4 3 3 1 1 2",
-        "example_output": "2 2 3 0",
+        "inputExample": "4 3 4 3 3 1 1 2",
+        "outputExample": "2 2 3 0",
         "tags": ["implementation", "math"],
     }
     problem = ProblemDBSchema(**data)
@@ -34,8 +34,8 @@ def test_problem_db_schema():
     assert problem.authorId == data["authorId"]
     assert problem.title == data["title"]
     assert problem.description == data["description"]
-    assert problem.example_input == data["example_input"]
-    assert problem.example_output == data["example_output"]
+    assert problem.inputExample == data["inputExample"]
+    assert problem.outputExample == data["outputExample"]
     assert problem.tags == data["tags"]
 
 
@@ -43,15 +43,15 @@ def test_update_problem_schema():
     data = {
         "title": "Rudolph and Cut the Rope",
         "description": "There are nnails driven into the wall, the ith nail is drive...",
-        "example_input": "4 3 4 3 3 1 1 2",
-        "example_output": "2 2 3 0",
+        "inputExample": "4 3 4 3 3 1 1 2",
+        "outputExample": "2 2 3 0",
         "tags": ["implementation", "math"],
     }
     problem = UpdateProblemSchema(**data)
     assert problem.title == data["title"]
     assert problem.description == data["description"]
-    assert problem.example_input == data["example_input"]
-    assert problem.example_output == data["example_output"]
+    assert problem.inputExample == data["inputExample"]
+    assert problem.outputExample == data["outputExample"]
     assert problem.tags == data["tags"]
 
 
@@ -64,7 +64,7 @@ def dict_to_problem_db_schema(problem: dict) -> ProblemDBSchema:
         authorId=problem["authorId"],
         title=problem["title"],
         description=problem["description"],
-        example_input=problem["example_input"],
-        example_output=problem["example_output"],
+        inputExample=problem["inputExample"],
+        outputExample=problem["outputExample"],
         tags=problem["tags"],
     )

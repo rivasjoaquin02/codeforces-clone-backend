@@ -36,8 +36,8 @@ async def retrieve_user(field: str, key: str | ObjectId) -> UserDBSchema | None:
     example:
     retrieve_user(field="username", key="johndoe") -> dict
     """
-    user_in_db: dict = await users_collection.find_one({field: key})
-    
+    user_in_db = await users_collection.find_one({field: key})
+
     if not user_in_db:
         return None
 
@@ -53,6 +53,8 @@ async def add_user(user_data: UserSignupSchema) -> UserDBSchema | None:
         "username", user_data.username
     ) or await retrieve_user("email", user_data.email)
 
+    # print ("---->" , user_in_db)
+
     if user_in_db:
         raise HTTPException(
             status_code=status.HTTP_400_BAD_REQUEST,
@@ -66,11 +68,12 @@ async def add_user(user_data: UserSignupSchema) -> UserDBSchema | None:
         "email": user_data.email,
         "hashed_password": hash_password(user_data.password),
         "disabled": False,
+        "avatar": "avatar",
     }
 
     inserted_user = await users_collection.insert_one(user_to_insert)
     inserted_id: str = inserted_user.inserted_id
-    user_in_db = await retrieve_user("_id", inserted_id)
+    user_in_db = await retrieve_user("_id", ObjectId(inserted_id))
     return user_in_db
 
 

@@ -61,6 +61,8 @@ async def add_problem_data(
     problem_data: ProblemSchema = Body(...),
     user: UserSchema = Depends(current_active_user),
 ):
+    print (problem_data)
+    
     inserted_problem = await add_problem(user.id, problem_data)
     if not inserted_problem:
         raise HTTPException(

@@ -10,12 +10,13 @@ app.include_router(UsersRouter, tags=["Users"], prefix="/users")
 app.include_router(ProblemsRouter, tags=["Problems"], prefix="/problems")
 
 # CROSS (Cross-Origin RESOURCE SHARING)
+origins = ["http://localhost", "http://localhost:3000"]
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
-    # allow_credentials=True,
+    allow_origins=origins,
+    allow_credentials=True,
     allow_methods=["*"],
-    allow_headers=["*"],
+    allow_headers=["*", "Content-Type", "Authorization"],
 )
 
 

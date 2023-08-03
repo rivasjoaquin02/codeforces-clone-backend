@@ -29,8 +29,8 @@ def generate_n_problems_schema(n: int):
             authorId=f"{i}",
             title=f"Foo Bar {i}",
             description="foo bar",
-            example_input="foo bar",
-            example_output="foo bar",
+            inputExample="foo bar",
+            outputExample="foo bar",
             tags=["foo", "bar"],
         )
         for i in range(n)
@@ -109,8 +109,8 @@ async def add_problem(problem_data: ProblemSchema) -> ProblemDBSchema | None:
         "authorId": problem_data.authorId,
         "title": problem_data.title,
         "description": problem_data.description,
-        "example_input": problem_data.example_input,
-        "example_output": problem_data.example_output,
+        "inputExample": problem_data.inputExample,
+        "outputExample": problem_data.outputExample,
         "tags": problem_data.tags,
     }
 

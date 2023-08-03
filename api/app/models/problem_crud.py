@@ -52,8 +52,8 @@ async def add_problem(authorId: str, problem_data: ProblemSchema) -> ProblemDBSc
         "authorId": authorId,
         "title": problem_data.title,
         "description": problem_data.description,
-        "example_input": problem_data.example_input,
-        "example_output": problem_data.example_output,
+        "inputExample": problem_data.inputExample,
+        "outputExample": problem_data.outputExample,
         "tags": problem_data.tags,
         "difficulty": problem_data.difficulty,
     }

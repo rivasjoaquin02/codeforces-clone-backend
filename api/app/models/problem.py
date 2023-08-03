@@ -6,8 +6,8 @@ from pydantic import BaseModel, Field
 class ProblemSchema(BaseModel):
     title: str = Field(..., min_length=3, max_length=50)
     description: str = Field(..., min_length=3, max_length=1000)
-    example_input: str
-    example_output: str
+    inputExample: str
+    outputExample: str
     tags: list[str] | None
     difficulty: str
 
@@ -16,8 +16,8 @@ class ProblemSchema(BaseModel):
             "example": {
                 "title": "Rudolph and Cut the Rope",
                 "description": "There are nnails driven into the wall, the ith nail is drive...",
-                "example_input": "4 3 4 3 3 1 1 2",
-                "example_output": "2 2 3 0",
+                "inputExample": "4 3 4 3 3 1 1 2",
+                "outputExample": "2 2 3 0",
                 "tags": ["implementation", "math"],
                 "difficulty": "easy",
             }
@@ -32,8 +32,8 @@ class ProblemDBSchema(ProblemSchema):
 class UpdateProblemSchema(BaseModel):
     title: str | None
     description: str | None
-    example_input: str | None
-    example_output: str | None
+    inputExample: str | None
+    outputExample: str | None
     tags: list[str] | None
     difficulty: str | None
 
@@ -54,8 +54,8 @@ def dict_to_problem_db_schema(problem: dict) -> ProblemDBSchema:
         authorId=str(problem["authorId"]),
         title=problem["title"],
         description=problem["description"],
-        example_input=problem["example_input"],
-        example_output=problem["example_output"],
+        inputExample=problem["inputExample"],
+        outputExample=problem["outputExample"],
         tags=problem["tags"],
         difficulty=problem["difficulty"],
     )

@@ -9,6 +9,7 @@ class UserSchema(BaseModel):
     fullname: str = Field(..., min_length=3, max_length=50)
     email: EmailStr = Field(...)
     disabled: bool
+    avatar: str
 
     class Config:
         schema_extra = {
@@ -45,7 +46,7 @@ class UserSignupSchema(BaseModel):
     username: str = Field(..., min_length=3, max_length=20)
     password: str = Field(..., min_length=3, max_length=50)
     email: EmailStr = Field(...)
-    fullname: str | None
+    fullname: str = Field(..., min_length=3, max_length=50)
 
     class Config:
         schema_extra = {
@@ -68,6 +69,7 @@ def dict_to_user_schema(user: dict) -> UserSchema:
         email=user["email"],
         fullname=user["fullname"],
         disabled=user["disabled"],
+        avatar=user["avatar"],
     )
 
 
@@ -79,4 +81,5 @@ def dict_to_user_db_schema(user: dict) -> UserDBSchema:
         fullname=user["fullname"],
         disabled=user["disabled"],
         hashed_password=user["hashed_password"],
+        avatar=user["avatar"],
     )
