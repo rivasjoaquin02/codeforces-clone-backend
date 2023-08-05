@@ -7,12 +7,9 @@ from datetime import datetime, timedelta
 from dotenv import dotenv_values
 
 env = dotenv_values(".env")
-# SECRET_KEY = str(env.get("SECRET_KEY", "default_secret_key"))
-# ALGORITHM = str(env.get("ALGORITHM", "default_algorithm"))
-# TOKEN_EXPIRE_MINUTES = float(env.get("TOKEN_EXPIRE_MINUTES") or 30.0)
-TOKEN_EXPIRE_MINUTES = 30
-SECRET_KEY = "8f09ecb804da72a44a4684c83a82172749600686e984dc79cb30e6aef6947eb4"
-ALGORITHM = "HS256"
+SECRET_KEY = str(env.get("SECRET_KEY", "default_secret_key"))
+ALGORITHM = str(env.get("ALGORITHM", "default_algorithm"))
+TOKEN_EXPIRE_MINUTES = float(env.get("TOKEN_EXPIRE_MINUTES") or 30.0)
 
 
 class Token(BaseModel):
